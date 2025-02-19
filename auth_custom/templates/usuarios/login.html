@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block container_dashboard %}
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <h3>Condofácil - Login</h3>
+      <div class="row">
+        <div class="col-xl-6 col-sm-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <!-- Formulário de Login -->
+              <form id="loginForm" class="form" method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <h2>Bem-vindo ao Condofácil</h2>
+                <p>Faça login para acessar sua conta.</p>
+                {{ login_form.as_p }}
+                <button type="submit" class="btn">
+                  <span class="btn-text">Entrar</span>
+                  <span class="loader"></span>
+                </button>
+                <p class="toggle-form">Não tem uma conta? <a href="{% url 'signup' %}">Cadastre-se</a></p>
+              </form>
+
+              <!-- Formulário de Cadastro -->
+              <form id="signupForm" class="form hidden" method="post" action="{% url 'signup' %}">
+                {% csrf_token %}
+                <h2>Crie sua conta</h2>
+                <p>Junte-se ao Condofácil e simplifique a gestão do seu condomínio.</p>
+                {{ signup_form.as_p }}
+                <button type="submit" class="btn">
+                  <span class="btn-text">Cadastrar</span>
+                  <span class="loader"></span>
+                </button>
+                <p class="toggle-form">Já tem uma conta? <a href="{% url 'login' %}">Faça login</a></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

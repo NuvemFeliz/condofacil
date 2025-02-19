@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Condofácil</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-6">Dashboard - Condofácil</h1>
+
+        <!-- Cards de Estatísticas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold">Condomínios</h2>
+                <p class="text-2xl">{{ total_condominios }}</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold">Moradores</h2>
+                <p class="text-2xl">{{ total_moradores }}</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold">Funcionários</h2>
+                <p class="text-2xl">{{ total_funcionarios }}</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold">Reservas Ativas</h2>
+                <p class="text-2xl">{{ total_reservas }}</p>
+            </div>
+        </div>
+
+        <!-- Gráfico de Transações Recentes -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-xl font-semibold mb-4">Transações Recentes</h2>
+            <canvas id="transacoesChart" width="400" height="200"></canvas>
+        </div>
+
+        <!-- Ocorrências Pendentes -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4">Ocorrências Pendentes</h2>
+            <p class="text-2xl">{{ ocorrencias_pendentes }}</p>
+        </div>
+    </div>
+
+    
+</body>
+</html>

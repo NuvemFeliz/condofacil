@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assinaturas</title>
+</head>
+<body>
+    <h1>Lista de Assinaturas</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuário</th>
+                <th>Tipo</th>
+                <th>Status</th>
+                <th>Data Início</th>
+                <th>Data Vencimento</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for assinatura in assinaturas %}
+            <tr>
+                <td>{{ assinatura.id }}</td>
+                <td>{{ assinatura.usuario.username if assinatura.usuario else "Sem usuário" }}</td>
+                <td>{{ assinatura.tipo }}</td>
+                <td>{{ assinatura.status }}</td>
+                <td>{{ assinatura.data_inicio }}</td>
+                <td>{{ assinatura.data_vencimento }}</td>
+                <td>R$ {{ assinatura.valor }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

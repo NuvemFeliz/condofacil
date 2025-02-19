@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Condomínios - Condofácil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .logo {
+            max-width: 50px;
+            max-height: 50px;
+        }
+        .actions {
+            text-align: center;
+        }
+        .actions a {
+            margin: 0 5px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .actions a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Condomínios</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Logo</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>País</th>
+                <th>Província/Estado</th>
+                <th>Tipo</th>
+                <th>Proprietário</th>
+                <th class="actions">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for condominio in condominios %}
+            <tr>
+                <td>
+                    {% if condominio.logo %}
+                        <img src="{{ condominio.logo.url }}" alt="Logo" class="logo">
+                    {% else %}
+                        Sem logo
+                    {% endif %}
+                </td>
+                <td>{{ condominio.nome }}</td>
+                <td>{{ condominio.endereco }}</td>
+                <td>{{ condominio.pais }}</td>
+                <td>{{ condominio.provincia|default:condominio.estado }}</td>
+                <td>{{ condominio.get_tipo_condominio_display }}</td>
+                <td>{{ condominio.proprietario.username }}</td>
+                <td class="actions">
+                    <a href="#">Editar</a>
+                    <a href="#">Excluir</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8">Nenhum condomínio cadastrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
